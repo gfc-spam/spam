@@ -19,6 +19,8 @@ client.on("message", async message => {
     // If the message doesn't start with the prefix, return
     if (!message.guild) return;
     if (!message.content.startsWith(prefix)) return;
+    if(!message.member.roles.has("646459820517490688"))
+      return message.reply("you don't have permissions to do that !");
 
     // Arguments and command variable
     // cmd is the first word in the message, aka the command
