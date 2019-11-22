@@ -1,3 +1,4 @@
+
 const Discord = require('discord.js');
 const client = new Discord.Client();
 console.log("⪧ SPAMMER ⪦");
@@ -17,10 +18,10 @@ client.on("message", async message => {
     // If the author's a bot, return
     // If the message was not sent in a server, return
     // If the message doesn't start with the prefix, return
-    if (message.author.bot) return;
     if (!message.guild) return;
     if (!message.content.startsWith(prefix)) return;
-
+    if (message.member.roles.find(role => role.hasPermission('Administrator'))){
+        
     // Arguments and command variable
     // cmd is the first word in the message, aka the command
     // args is an array of words after the command
@@ -67,5 +68,5 @@ client.on("message", async message => {
         if (args[0].toLowerCase() === process.env.INDEX ) {
             message.channel.send(args.slice(1).join(" "));
         }
-    }
+    }} else { message.channel.send("<@" + message.author.id + ">" + " , You don't have permission to do that !😟") }
 });
