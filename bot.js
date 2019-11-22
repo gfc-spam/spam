@@ -20,7 +20,6 @@ client.on("message", async message => {
     if (message.author.bot) return;
     if (!message.guild) return;
     if (!message.content.startsWith(prefix)) return;
-    if (!message.member.roles.has(role => role.hasPermission('Administrator'))) return message.reply("You don't have permissions to do that !😢");
     // Arguments and command variable
     // cmd is the first word in the message, aka the command
     // args is an array of words after the command
