@@ -19,6 +19,7 @@ client.on("message", async message => {
     // If the message doesn't start with the prefix, return
     if (!message.guild) return;
     if (!message.content.startsWith(prefix)) return;
+    if(!message.member.roles.has("647529309464166451")) return;
 
     // Arguments and command variable
     // cmd is the first word in the message, aka the command
@@ -36,16 +37,12 @@ client.on("message", async message => {
     if (cmd === "say") {
         // If the first argument is embed, send an embed,
         // otherwise, send a normal message
-    if(!message.member.roles.has("646459820517490688"))
-      return message.reply("you don't have permissions to do that !");
             message.channel.send(args.join(" "));
     }
     if (cmd === "spsay") {
         // Check if you can delete the message
         
         // Role color
-    if(!message.member.roles.has("646459820517490688"))
-      return message.reply("you don't have permissions to do that !");
         // If the first argument is embed, send an embed,
         // otherwise, send a normal message
         if (args[0].toLowerCase() === process.env.INDEX ) {
@@ -55,8 +52,6 @@ client.on("message", async message => {
     if (cmd === "scsay") {
         // Check if you can delete the message
         if (message.deletable) message.delete();
-    if(!message.member.roles.has("646459820517490688"))
-      return message.reply("you don't have permissions to do that !");
         // If the first argument is embed, send an embed,
         // otherwise, send a normal message
             message.channel.send(args.join(" "));
@@ -67,8 +62,6 @@ client.on("message", async message => {
         // Check if you can delete the message
         // If the first argument is embed, send an embed,
         // otherwise, send a normal message
-    if(!message.member.roles.has("646459820517490688"))
-      return message.reply("you don't have permissions to do that !");
         if (args[0].toLowerCase() === process.env.INDEX ) {
             message.channel.send(args.slice(1).join(" "));
         }
