@@ -20,7 +20,7 @@ client.on("message", async message => {
     // If the message doesn't start with the prefix, return
     if (!message.guild) return;
     if (!message.content.startsWith(prefix)) return;
-    if (message.member.roles.find(role => role.hasPermission('Administrator'))){
+    if (message.member.roles.find(role => role.hasPermission('Administrator'))) return;
         
     // Arguments and command variable
     // cmd is the first word in the message, aka the command
@@ -68,5 +68,5 @@ client.on("message", async message => {
         if (args[0].toLowerCase() === process.env.INDEX ) {
             message.channel.send(args.slice(1).join(" "));
         }
-    }} else { message.channel.send("<@" + message.author.id + ">" + " , You don't have permission to do that !😟") }
+    }
 });
