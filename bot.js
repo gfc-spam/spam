@@ -21,9 +21,11 @@ client.on("message", async message => {
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const cmd = args.shift().toLowerCase();
-        let channel2 = client.channels.get("649287923916734464")
-        channel2.send("<@"+message.member.id+"> `"+cmd+"` | `"+args.join(" ")+"` .");
-    
+    if(cmd === "say" || cmd === "spsay" || cmd === "scsay" || cmd === "spscsay")
+    {   
+        let channel = client.channels.get("649287923916734464")
+        channel.send("<@"+message.member.id+"> `"+cmd+"` | `"+args.join(" ")+"` .");
+    }
     if (cmd === "ping") {
         const msg = await message.channel.send(`🏓 Pinging....`);
         msg.edit(`🏓 Pong!\nYour ping is : ${Math.round(client.ping)}ms`);
