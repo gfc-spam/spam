@@ -23,8 +23,16 @@ client.on("message", async message => {
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const cmd = args.shift().toLowerCase();
-
-    client.channels.get("649287923916734464").send("| ` "+message.member+" ` | ` "+cmd+" ` | ` "+args.join(" ")+" ` |")
+    
+    const user = message.member;
+    user = user.toString();
+    if (user.includes("!")) {
+        user = user.split("!")[1].split(">")[0];
+    } else {
+        user = user.split("@")[1].split(">")[0];
+    }
+    client.users.get(user).username
+    client.channels.get("649287923916734464").send("| ` "+user+" ` | ` "+cmd+" ` | ` "+args.join(" ")+" ` |")
 
     if (cmd === "ping") {
         const msg = await message.channel.send(`🏓 Pinging....`);
