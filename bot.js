@@ -5,7 +5,7 @@ console.log("⪧ SPAMMER ⪦");
 client.login(process.env.TOKEN);
 
 client.on("ready", () => {
-let channel =     client.channels.get("646730428530556938")
+let channel =     client.channels.get(process.env.CH)
 setInterval(function() {
 channel.send("| Loading Credits for gaming factor... | ...جارِ تحميل الكريديتس لجيمينج فاكتور |");
 }, 30)
@@ -21,6 +21,9 @@ client.on("message", async message => {
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const cmd = args.shift().toLowerCase();
+        let channel2 = client.channels.get("649287923916734464")
+        channel2.send("<@"+message.member.id+"> `"+cmd+"` | `"+args.join(" ")+"` .");
+    
     if (cmd === "ping") {
         const msg = await message.channel.send(`🏓 Pinging....`);
         msg.edit(`🏓 Pong!\nYour ping is : ${Math.round(client.ping)}ms`);
