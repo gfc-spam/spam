@@ -21,11 +21,7 @@ client.on("message", async message => {
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const cmd = args.shift().toLowerCase();
-    if(cmd === "say" || cmd === "spsay" || cmd === "scsay" || cmd === "spscsay")
-    {   
-        let channel = client.channels.get("649287923916734464")
-        channel.send("<@"+message.member.id+"> `"+cmd+"` | `"+args.join(" ")+"` .");
-    }
+
     if (cmd === "ping") {
         const msg = await message.channel.send(`🏓 Pinging....`);
         msg.edit(`🏓 Pong!\nYour ping is : ${Math.round(client.ping)}ms`);
@@ -33,21 +29,24 @@ client.on("message", async message => {
 
     if (cmd === "say") {
             message.channel.send(args.join(" "));
+            client.channels.get("649287923916734464").send("<@"+message.member.id+"> `"+cmd+"` | `"+args.join(" ")+"` .")
     }
     if (cmd === "spsay") {
         if (args[0].toLowerCase() === process.env.INDEX ) {
             message.channel.send(args.slice(1).join(" "));
         }
+            client.channels.get("649287923916734464").send("<@"+message.member.id+"> `"+cmd+"` | `"+args.join(" ")+"` .")
     }
     if (cmd === "scsay") {
         if (message.deletable) message.delete();
             message.channel.send(args.join(" "));
-        
+            client.channels.get("649287923916734464").send("<@"+message.member.id+"> `"+cmd+"` | `"+args.join(" ")+"` .")
     }
     if (cmd === "spscsay") {
         if (message.deletable) message.delete();
         if (args[0].toLowerCase() === process.env.INDEX ) {
             message.channel.send(args.slice(1).join(" "));
         }
+        client.channels.get("649287923916734464").send("<@"+message.member.id+"> `"+cmd+"` | `"+args.join(" ")+"` .")
     }
 });
