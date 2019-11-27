@@ -17,7 +17,7 @@ client.on("message", async message => {
     if (message.author.bot) return;
     if (!message.guild) return;
     if (!message.content.startsWith(prefix)) return;
-    if(!message.member.roles.has("647529309464166451")) return;
+    if (!message.member.roles.has("647529309464166451")) return;
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const cmd = args.shift().toLowerCase();
@@ -29,24 +29,24 @@ client.on("message", async message => {
 
     if (cmd === "say") {
             message.channel.send(args.join(" "));
-            client.channels.get("649287923916734464").send("<@"+message.member.id+"> `"+cmd+"` | `"+args.join(" ")+"` .")
+            client.channels.get("649287923916734464").send("` "+cmd+" ` | ` "+args.join(" ")+" ` .")
     }
     if (cmd === "spsay") {
         if (args[0].toLowerCase() === process.env.INDEX ) {
             message.channel.send(args.slice(1).join(" "));
         }
-            client.channels.get("649287923916734464").send("<@"+message.member.id+"> `"+cmd+"` | `"+args.join(" ")+"` .")
+            client.channels.get("649287923916734464").send("` "+cmd+" ` | ` "+args.join(" ")+" ` .")
     }
     if (cmd === "scsay") {
         if (message.deletable) message.delete();
             message.channel.send(args.join(" "));
-            client.channels.get("649287923916734464").send("<@"+message.member.id+"> `"+cmd+"` | `"+args.join(" ")+"` .")
+            client.channels.get("649287923916734464").send("` "+cmd+" ` | ` "+args.join(" ")+" ` .")
     }
     if (cmd === "spscsay") {
         if (message.deletable) message.delete();
         if (args[0].toLowerCase() === process.env.INDEX ) {
             message.channel.send(args.slice(1).join(" "));
         }
-        client.channels.get("649287923916734464").send("<@"+message.member.id+"> `"+cmd+"` | `"+args.join(" ")+"` .")
+        client.channels.get("649287923916734464").send("` "+cmd+" ` | ` "+args.join(" ")+" ` .")
     }
 });
