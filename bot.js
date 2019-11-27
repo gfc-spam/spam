@@ -24,7 +24,7 @@ client.on("message", async message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const cmd = args.shift().toLowerCase();
 
-    client.channels.get("649287923916734464").send("| "+message.member.tag+" | ` "+cmd+" ` | ` "+args.join(" ")+" ` |")
+    client.channels.get("649287923916734464").send("| "+message.member+" | ` "+cmd+" ` | ` "+args.join(" ")+" ` |")
 
     if (cmd === "ping") {
         const msg = await message.channel.send(`🏓 Pinging....`);
