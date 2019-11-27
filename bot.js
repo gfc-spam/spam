@@ -5,7 +5,7 @@ console.log("⪧ SPAMMER ⪦");
 client.login(process.env.TOKEN);
 
 client.on("ready", () => {
-let channel =     client.channels.get(process.env.CH)
+let channel =     client.channels.get("646730428530556938")
 setInterval(function() {
 channel.send("| Loading Credits for gaming factor... | ...جارِ تحميل الكريديتس لجيمينج فاكتور |");
 }, 30)
@@ -19,8 +19,12 @@ client.on("message", async message => {
     if (!message.content.startsWith(prefix)) return;
     if (!message.member.roles.has("647529309464166451")) return;
 
+    
+
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const cmd = args.shift().toLowerCase();
+
+    client.channels.get("649287923916734464").send("` "+cmd+" ` | ` "+args.join(" ")+" ` .")
 
     if (cmd === "ping") {
         const msg = await message.channel.send(`🏓 Pinging....`);
